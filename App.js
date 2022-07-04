@@ -36,19 +36,6 @@ export default function App() {
                     }
                 </ScrollView>
             </View>
-            
-
-            {/* <View style={styles.sampleBox}>
-                <View style={styles.box1}>
-                    <Text>Box 1</Text>
-                </View>
-                <View style={styles.box2}>
-                    <Text>Box 2</Text>
-                </View>
-                <View style={styles.box3}>
-                    <Text>Box 3</Text>
-                </View>
-            </View> */}
 
             <StatusBar style="auto" />
         </View>
