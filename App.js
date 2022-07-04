@@ -1,9 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
-import { StyleSheet, Text, View, Button, TextInput } from 'react-native';
+import { StyleSheet, Text, View, Button, TextInput, ScrollView } from 'react-native';
 
 export default function App() {
     const [enteredGoalText,setEtnteredGoalText] = useState('')
+
+    const [courseGoals, setCourseGoals] = useState([])
 
     function goalInputHandler(enteredText) {
         // console.log(enteredText)
@@ -11,22 +13,30 @@ export default function App() {
     }
 
     function addGoalHandler() {
-        console.log(enteredGoalText)
+        // console.log(enteredGoalText)
+        setCourseGoals(currentCourseGoals => [...currentCourseGoals,enteredGoalText])
     }
 
 
     return (
         <View style={styles.appContainer}>
 
-            <View style={styles.sampleForm}>
-                <View style={styles.inputContainer}>
-                    <TextInput style={styles.textInput} placeholder='Your course goal!' onChangeText={goalInputHandler}/>
-                    <Button title='Add Goal' onPress={addGoalHandler}/>
-                </View>
-                <View>
-                    <Text>List of Goals....</Text>
-                </View>
+            <View style={styles.inputContainer}>
+                <TextInput style={styles.textInput} placeholder='Your course goal!' onChangeText={goalInputHandler}/>
+                <Button title='Add Goal' onPress={addGoalHandler}/>
             </View>
+            <View style={styles.goalContainer}>
+                <ScrollView alwaysBounceVertical={false}>
+                    {
+                        courseGoals.map((goal) => 
+                            <View style={styles.goalView} key={goal}>
+                                <Text style={styles.goalText} >{goal}</Text>
+                            </View>
+                        )
+                    }
+                </ScrollView>
+            </View>
+            
 
             {/* <View style={styles.sampleBox}>
                 <View style={styles.box1}>
@@ -48,50 +58,40 @@ export default function App() {
 
 const styles = StyleSheet.create({
     appContainer: {
+        flex:1,
         paddingTop: 50,
-        paddingHorizontal: 16
+        paddingHorizontal: 16,
+        backgroundColor: 'orange',
     },
-
-    sampleForm: {
-    },
-    inputContainer: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-between'
-    },
-    textInput: {
-        borderWidth: 1,
-        borderColor: '#ccc',
-        width: '70%',
-        marginRight: 8,
-        padding: 8
-    },
-
-
-    sampleBox: {
-        paddingTop: 50,
-        flexDirection: 'row',
-        width: '100%',
-        height: 200,
-        justifyContent: 'space-around',
-        alignItems: 'stretch'
-    },
-    box1: {
-        backgroundColor: 'yellow',
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center'
+        inputContainer: {
+            flex:1,
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            paddingHorizontal: 16,
+            borderBottomWidth: 1,
+            borderBottomColor: '#cccccc',
+            backgroundColor: 'white'
         },
-        box2: {
-        backgroundColor: 'green',
-        flex: 3,
-        justifyContent: 'center',
-        alignItems: 'center'
+            textInput: {
+                borderWidth: 1,
+                borderColor: '#ccc',
+                width: '70%',
+                marginRight: 8,
+                padding: 8,
+            },
+
+        goalContainer: {
+            flex:5,
+            padding: 16
         },
-        box3: {
-        backgroundColor: 'red',
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center'
-    }
+            goalView:{
+                padding: 8, 
+                marginVertical: 8,
+                borderRadius: 6,
+                backgroundColor: 'white',
+            },
+            goalText: {
+                color: 'gray'
+            }
 });
