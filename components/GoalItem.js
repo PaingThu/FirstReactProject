@@ -18,7 +18,6 @@ const styles = StyleSheet.create({
     goalView:{
         marginVertical: 8,
         borderRadius: 6,
-        backgroundColor: 'white',
     },
     pressedItem:{
         opacity: 0.5    

@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         paddingHorizontal: 16,
-        backgroundColor: 'gray',
+        backgroundColor: 'orange'
     },
     image: {
         width: 100,
@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
     textInput: {
         borderWidth: 1,
         borderColor: '#ccc',
-        backgroundColor: 'white',
+        borderRadius: 8,
         width: '100%',
         padding: 8,
     },

@@ -46,7 +46,7 @@ export default function App() {
 
             </View>
 
-            <StatusBar style="auto" />
+            <StatusBar style="light" />
         </View>
 
     );
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
         flex: 1,
         paddingTop: 50,
         paddingHorizontal: 16,
-        backgroundColor: 'orange',
+        // backgroundColor: 'orange',
     },
 
 
